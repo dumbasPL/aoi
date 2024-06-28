@@ -1,6 +1,6 @@
-FROM node:18 as build
+FROM node:lts-alpine as build
 
-WORKDIR /builder/
+WORKDIR /builder
 
 COPY package.json yarn.lock ./
 
@@ -10,7 +10,7 @@ COPY ./ ./
 
 RUN yarn build
 
-FROM node:18
+FROM node:lts-alpine
 
 ENV NODE_ENV=production
 ENV PORT=3000
